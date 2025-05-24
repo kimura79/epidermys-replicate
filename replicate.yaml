@@ -1,0 +1,21 @@
+predict: predict.py:run
+input_schema:
+  image:
+    type: file
+    description: Immagine del volto in formato JPG o PNG
+    required: true
+output_schema:
+  type: object
+  properties:
+    fototipo:
+      type: string
+    posa:
+      type: string
+    L*:
+      type: number
+    a*:
+      type: number
+    b*:
+      type: number
+    fototipo_grezzo:
+      type: string
