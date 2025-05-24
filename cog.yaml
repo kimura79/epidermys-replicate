@@ -1,11 +1,10 @@
 build:
-  gpu: true
   python_version: "3.10"
   python_packages:
-    - "opencv-python"
-    - "numpy"
-    - "torch"
-    - "scikit-image"
-    - "mediapipe==0.10.9"
+    - opencv-python-headless
+    - numpy
+    - scikit-image
+    - mediapipe==0.10.9
+    - Pillow
 
-predict: "predict.py:Predictor"
+predict: run.py:PredictorCog
