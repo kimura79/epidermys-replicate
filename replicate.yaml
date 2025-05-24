@@ -1,9 +1,15 @@
-predict: predict.py:run
+predict: run.py:run
+
 input_schema:
   image:
     type: file
-    description: Immagine del volto in formato JPG o PNG
+    description: Immagine del volto (JPG o PNG)
     required: true
+  eta:
+    type: integer
+    description: Età stimata dal modulo PWA
+    required: true
+
 output_schema:
   type: object
   properties:
