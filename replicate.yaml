@@ -1,21 +1,19 @@
-predict: predict.py:predict
-
+predict: run.py:run
 input_schema:
   image:
     type: file
-    description: Immagine del volto (JPG o PNG)
+    description: Immagine del volto in formato JPG o PNG
     required: true
   eta:
     type: integer
-    description: Età stimata (opzionale, se nota)
+    description: Età del paziente (opzionale)
     required: false
-
 output_schema:
   type: object
   properties:
-    fototipo:
-      type: string
     posa:
+      type: string
+    fototipo:
       type: string
     L*:
       type: number
@@ -23,7 +21,5 @@ output_schema:
       type: number
     b*:
       type: number
-    fototipo_grezzo:
-      type: string
-    età:
+    eta_input:
       type: string
