@@ -1,4 +1,4 @@
-predict: run.py:run
+predict: predict.py:predict
 
 input_schema:
   image:
@@ -7,8 +7,8 @@ input_schema:
     required: true
   eta:
     type: integer
-    description: Età stimata dal modulo PWA
-    required: true
+    description: Età stimata (opzionale, se nota)
+    required: false
 
 output_schema:
   type: object
@@ -24,4 +24,6 @@ output_schema:
     b*:
       type: number
     fototipo_grezzo:
+      type: string
+    età:
       type: string
