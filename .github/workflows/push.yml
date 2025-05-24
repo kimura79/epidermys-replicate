@@ -1,4 +1,5 @@
 name: Push to Replicate
+
 on:
   workflow_dispatch:
     inputs:
@@ -16,11 +17,27 @@ jobs:
         with:
           tool-cache: false
           docker-images: false
+
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Cog
         uses: replicate/setup-cog@v2
         with:
           token: ${{ secrets.REPLICATE_CLI_AUTH_TOKEN }}
+
+      - name: Check Cog version
+        run: cog --version
+
+      - name: Debug info
+        run: |
+          echo "Model name: ${{ inputs.model_name }}"
+          echo "Files in root:"
+          ls -la
+          echo "Checking for cog.yaml:"
+          if [ -f "cog.yaml" ]; then echo "✅ cog.yaml found"; else echo "❌ cog.yaml NOT found"; fi
+
       - name: Push to Replicate
-        run: cog push r8.im/${{ inputs.model_name }}
+        run: |
+          set -x  # mostra i comandi mentre vengono eseguiti
+          cog push r8.im/${{ inputs.model_name }}
