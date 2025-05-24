@@ -38,3 +38,4 @@ Il modello:
   "b*": 18.2,
   "fototipo_grezzo": "III"
 }
+versione aggiornata
