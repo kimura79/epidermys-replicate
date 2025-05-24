@@ -1,9 +1,21 @@
-FROM r8.im/cog/python:3.10
+# === Dockerfile ===
+FROM python:3.10-slim
 
-# Installa libGL per far funzionare OpenCV
-RUN apt-get update && apt-get install -y libgl1
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY . /src
+# Set working directory
 WORKDIR /src
 
-RUN pip install -r requirements.txt
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy source code
+COPY . .
+
+# Run predictor
+CMD ["python", "predict.py"]
